@@ -1,3 +1,4 @@
 pyrogram
 Pillow
 TgCrypto
+flask
