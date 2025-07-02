@@ -1,4 +1,6 @@
-pyrogram
-Pillow
-TgCrypto
 flask
+Pillow
+pyrogram
+TgCrypto
+psycopg2-binary
+SQLAlchemy
