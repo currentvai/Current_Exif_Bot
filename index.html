@@ -55,6 +55,7 @@
             align-items: center;
             gap: 15px;
             margin-bottom: 50px;
+            width: 100%;
         }
 
         .app-logo {
@@ -70,10 +71,16 @@
 
         h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
+            /* MOBILE FIX: clamp function screen size onujayi font choto korbe */
+            font-size: clamp(1.4rem, 6vw, 2.5rem); 
             color: #fff;
             margin: 0;
             text-shadow: 0 0 10px var(--neon-cyan);
+            text-align: center;
+            width: 100%;
+            padding: 0 10px;
+            word-wrap: break-word;
+            letter-spacing: 2px;
         }
 
         .badge-row {
@@ -81,6 +88,7 @@
             gap: 10px;
             justify-content: center;
             margin-top: 10px;
+            flex-wrap: wrap; /* Mobile-e niche nambe */
         }
 
         .badge {
@@ -154,6 +162,7 @@
         /* Download Button */
         .cta-box {
             margin: 80px 0;
+            padding: 0 20px;
         }
 
         .dl-btn {
@@ -167,6 +176,8 @@
             font-size: 18px;
             box-shadow: 0 10px 30px rgba(0, 242, 255, 0.3);
             transition: 0.3s;
+            display: inline-block;
+            max-width: 100%;
         }
 
         .dl-btn:hover {
@@ -181,12 +192,19 @@
             border-top: 1px solid #111;
         }
 
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
         .social-links a {
             color: #666;
-            margin: 0 15px;
             text-decoration: none;
             font-weight: 600;
             transition: 0.3s;
+            font-size: 14px;
         }
 
         .social-links a:hover { color: var(--neon-cyan); }
