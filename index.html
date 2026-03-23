@@ -8,8 +8,9 @@
     <style>
         :root {
             --neon-cyan: #00f2ff;
+            --neon-green: #39ff14;
             --dark-bg: #030303;
-            --glass: rgba(15, 15, 15, 0.9);
+            --glass: rgba(15, 15, 15, 0.85);
         }
 
         * { box-sizing: border-box; }
@@ -19,73 +20,67 @@
             background: var(--dark-bg);
             color: #e0e0e0;
             font-family: 'Exo 2', sans-serif;
-            overflow-x: hidden;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
-        /* Matrix Rain Effect Canvas */
+        /* Animated Matrix Background */
         #matrix {
             position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.15;
         }
 
-        .container {
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 10px;
+        .hero-section {
+            padding: 40px 20px;
+            text-align: center;
         }
 
-        /* Header & Banner */
         .banner-container {
-            width: 100%;
-            border: 1px solid rgba(0, 242, 255, 0.2);
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            border: 1px solid rgba(0, 242, 255, 0.3);
             border-radius: 12px;
             overflow: hidden;
-            margin-top: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
         }
 
         .banner-container img {
             width: 100%;
             display: block;
+            filter: contrast(1.1);
         }
 
         .app-header {
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
-            padding: 40px 10px;
+            gap: 15px;
+            margin-bottom: 50px;
         }
 
         .app-logo {
-            width: clamp(90px, 20vw, 130px);
-            height: auto;
-            border-radius: 25px;
+            width: 130px;
+            height: 130px;
+            border-radius: 24px;
             border: 2px solid var(--neon-cyan);
-            margin-bottom: 20px;
-            box-shadow: 0 0 25px rgba(0, 242, 255, 0.3);
+            box-shadow: 0 0 25px rgba(0, 242, 255, 0.4);
+            transition: transform 0.3s;
         }
+
+        .app-logo:hover { transform: rotate(5deg) scale(1.05); }
 
         h1 {
             font-family: 'Orbitron', sans-serif;
-            /* Mobile-e choto ar Desktop-e boro thakbe automatic */
-            font-size: clamp(1.4rem, 6vw, 2.5rem);
+            font-size: 2.5rem;
             color: #fff;
-            text-shadow: 0 0 10px var(--neon-cyan);
             margin: 0;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            width: 100%;
-            overflow-wrap: break-word;
+            text-shadow: 0 0 10px var(--neon-cyan);
         }
 
         .badge-row {
             display: flex;
             gap: 10px;
             justify-content: center;
-            margin-top: 15px;
-            flex-wrap: wrap;
+            margin-top: 10px;
         }
 
         .badge {
@@ -93,26 +88,25 @@
             border: 1px solid var(--neon-cyan);
             padding: 5px 15px;
             border-radius: 20px;
-            font-size: 11px;
+            font-size: 12px;
             color: var(--neon-cyan);
-            font-weight: bold;
+            text-transform: uppercase;
         }
 
         /* Device Preview Section */
-        .preview-title {
-            text-align: center;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            color: var(--neon-cyan);
-            margin: 40px 0 20px;
+        .preview-section {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 60px 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        .device-scroll {
+        .device-container {
             display: flex;
             justify-content: center;
             gap: 20px;
-            flex-wrap: wrap; /* Mobile-e niche niche nambe */
-            padding-bottom: 30px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .mockup {
@@ -120,14 +114,9 @@
             background: #000;
             border: 8px solid #1a1a1a;
             border-radius: 35px;
-            padding: 0;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-            transition: 0.3s;
-        }
-
-        .mockup:hover {
-            transform: translateY(-10px);
-            border-color: var(--neon-cyan);
+            padding: 5px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            transition: 0.4s;
         }
 
         .mockup img {
@@ -136,97 +125,96 @@
             display: block;
         }
 
-        /* Download Area */
-        .cta-section {
-            text-align: center;
-            margin: 60px 0;
+        .mockup:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: var(--neon-cyan);
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .f-card {
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            text-align: left;
+        }
+
+        .f-card h3 { color: var(--neon-cyan); font-family: 'Orbitron'; margin-top: 0; }
+
+        /* Download Button */
+        .cta-box {
+            margin: 80px 0;
         }
 
         .dl-btn {
             background: linear-gradient(45deg, var(--neon-cyan), #0072ff);
             color: #000;
-            padding: 18px 50px;
+            padding: 20px 60px;
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
             text-decoration: none;
             border-radius: 50px;
-            font-size: 1.1rem;
-            display: inline-block;
-            box-shadow: 0 0 30px rgba(0, 242, 255, 0.4);
+            font-size: 18px;
+            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.3);
             transition: 0.3s;
         }
 
         .dl-btn:hover {
-            transform: scale(1.05);
+            letter-spacing: 2px;
             box-shadow: 0 0 50px var(--neon-cyan);
         }
 
-        /* Footer */
         footer {
-            background: rgba(0,0,0,0.8);
-            padding: 50px 20px;
+            padding: 60px 20px;
+            background: #000;
             text-align: center;
-            border-top: 1px solid #222;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
+            border-top: 1px solid #111;
         }
 
         .social-links a {
-            color: var(--neon-cyan);
+            color: #666;
+            margin: 0 15px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 14px;
-            padding: 8px 15px;
-            border: 1px solid rgba(0, 242, 255, 0.2);
-            border-radius: 5px;
             transition: 0.3s;
         }
 
-        .social-links a:hover {
-            background: var(--neon-cyan);
-            color: #000;
-        }
-
-        .copyright {
-            font-size: 12px;
-            color: #555;
-            letter-spacing: 1px;
-        }
-
-        /* Media Query for small phones */
-        @media (max-width: 400px) {
-            .mockup { width: 100%; }
-            h1 { font-size: 1.2rem; }
-        }
+        .social-links a:hover { color: var(--neon-cyan); }
     </style>
 </head>
 <body>
 
 <canvas id="matrix"></canvas>
 
-<div class="container">
+<section class="hero-section">
     <div class="banner-container">
-        <img src="Images/Banner.png" alt="App Banner">
+        <img src="Images/Banner.png" alt="Current Exif Bot Banner">
     </div>
 
-    <header class="app-header">
-        <img src="Images/Current_Exif_Bot-v1.0-icon.png" class="app-logo" alt="Logo">
-        <h1>Current_Exif_Bot</h1>
+    <div class="app-header">
+        <img src="Images/Current_Exif_Bot-v1.0-icon.png" class="app-logo" alt="App Icon">
+        <h1>CURRENT_EXIF_BOT</h1>
         <div class="badge-row">
-            <span class="badge">V1.0 STABLE</span>
-            <span class="badge">FORENSIC TOOL</span>
-            <span class="badge">ENCRYPTED</span>
+            <span class="badge">Version 1.0</span>
+            <span class="badge">Forensic Ready</span>
+            <span class="badge">Secure</span>
         </div>
-    </header>
+    </div>
+</section>
 
-    <h2 class="preview-title">SYSTEM INTERFACE</h2>
-    <div class="device-scroll">
+<section class="preview-section">
+    <h2 style="text-align:center; font-family:'Orbitron'; margin-bottom:50px; color:var(--neon-cyan)">SYSTEM INTERFACE</h2>
+    <div class="device-container">
         <div class="mockup">
             <img src="Images/Screenshot_1-Current_Exif_Bot-v1.0.png" alt="Scan Screen">
         </div>
@@ -237,32 +225,42 @@
             <img src="Images/Screenshot_3-Current_Exif_Bot-v1.0.png" alt="Settings Screen">
         </div>
     </div>
+</section>
 
-    <div class="cta-section">
-        <a href="https://github.com/currentvai/Current-Exif-Bot/releases" class="dl-btn">GET THE APP</a>
+<section class="features">
+    <div class="f-card">
+        <h3>🔍 ANALYSIS</h3>
+        <p>Deep scan images to extract camera model, lens aperture, focal length, and ISO settings instantly.</p>
     </div>
+    <div class="f-card">
+        <h3>📍 GEOTAGS</h3>
+        <p>Pinpoint exactly where a photo was taken with integrated GPS coordinate extraction technology.</p>
+    </div>
+    <div class="f-card">
+        <h3>📜 HISTORY</h3>
+        <p>Keep track of all your previous forensic scans in a beautiful, organized history log.</p>
+    </div>
+</section>
 
-    <footer>
-        <div class="social-links">
-            <a href="https://github.com/currentvai">GITHUB</a>
-            <a href="https://t.me/currentvai">TELEGRAM</a>
-            <a href="https://www.facebook.com/cv.hasan.3">FACEBOOK</a>
-            <a href="mailto:currentvai@gmail.com">EMAIL</a>
-        </div>
-        <div class="copyright">
-            © 2026 CURRENT VAI. ALL RIGHTS RESERVED.<br>
-            <span style="color:#333; font-size:10px;">ENCRYPTED_TRANSMISSION_SECURED</span>
-        </div>
-    </footer>
+<div class="cta-box" style="text-align:center;">
+    <a href="https://github.com/currentvai/Current-Exif-Bot/releases" class="dl-btn">DOWNLOAD APK</a>
 </div>
+
+<footer>
+    <div class="social-links">
+        <a href="https://github.com/currentvai">GITHUB</a>
+        <a href="https://t.me/currentvai">TELEGRAM</a>
+        <a href="mailto:currentvai@gmail.com">EMAIL</a>
+        <a href="https://www.facebook.com/cv.hasan.3">FACEBOOK</a>
+    </div>
+    <p style="margin-top:30px; font-size:12px; color:#444;">© 2026 CURRENT VAI. ALL RIGHTS RESERVED. <br> ENCRYPTED TRANSMISSION SECURED.</p>
+</footer>
 
 <script>
     const canvas = document.getElementById('matrix');
     const ctx = canvas.getContext('2d');
-
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-
     const letters = "01010101X";
     const fontSize = 14;
     const columns = canvas.width / fontSize;
