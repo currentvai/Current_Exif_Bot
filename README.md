@@ -22,8 +22,45 @@
 
 ## 📥 Download APK
 
-👉 https://github.com/currentvai/Current_Exif_Bot/releases
+## 📥 Download APK
 
+<p align="center">
+  <a href="https://github.com/currentvai/Current_Exif_Bot/releases">
+    <img src="https://img.shields.io/badge/Download-APK-brightgreen?style=for-the-badge&logo=android">
+  </a>
+</p>
+
+## 📥 Download APK
+
+<p align="center">
+  <a href="https://github.com/currentvai/Current_Exif_Bot/releases/download/v1.0-beta/Current_Exif_Bot_v1.0.apk">
+    <img src="https://img.shields.io/badge/Download-APK-green?style=for-the-badge&logo=android">
+  </a>
+</p>
+
+## 📥 Download APK
+
+<p align="center">
+  <a href="https://github.com/currentvai/Current_Exif_Bot/releases">
+    <img src="https://img.shields.io/badge/View-Releases-blue?style=for-the-badge&logo=github">
+  </a>
+  <a href="https://github.com/currentvai/Current_Exif_Bot/releases">
+    <img src="https://img.shields.io/badge/Download-APK-green?style=for-the-badge&logo=android">
+  </a>
+</p>
+
+## 📥 Download APK
+
+<p align="center">
+  <a href="https://github.com/currentvai/Current_Exif_Bot/releases">
+    <img src="https://img.shields.io/badge/Download-APK-brightgreen?style=for-the-badge&logo=android">
+  </a>
+</p>
+
+---
+<p align="center">
+  ⚡ Fast • Secure • No Ads
+</p>
 ---
 
 ## ✨ Features
