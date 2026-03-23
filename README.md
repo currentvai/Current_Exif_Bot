@@ -1,7 +1,7 @@
 # 🧠 Current_Exif_Bot
 
 <p align="center">
-  <img src="https://github.com/currentvai/Current_Exif_Bot/blob/main/Images/Current_Exif_Bot-v1.0-icon.png" width="100%">
+  <img src="Images/Banner.png" width="100%">
 </p>
 
 <p align="center">
@@ -16,34 +16,70 @@
 
 ---
 
-## ✨ Features
-
-- 📷 EXIF Metadata Viewer  
-- 📍 GPS Location Detection  
-- ⚡ Fast & Lightweight  
-
----
-
 ## 📥 Download APK
 
 👉 https://github.com/currentvai/Current_Exif_Bot/releases
 
 ---
 
-## 🎬 Preview
+## ✨ Features
+
+- 📷 Camera Specs & EXIF Info  
+- 📍 Live GPS Location Tracking  
+- 🔐 Privacy Protection Mode  
+- ⚡ Instant Metadata Analysis  
+
+---
+
+## 🖼️ App Screenshots
 
 <p align="center">
-  <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" width="300">
+  <img src="Images/Screenshot_1-Current_Exif_Bot-v1.0.png" width="250">
+  <img src="Images/Screenshot_2-Current_Exif_Bot-v1.0.png" width="250">
+  <img src="Images/Screenshot_3-Current_Exif_Bot-v1.0.png" width="250">
 </p>
+
+---
+
+## 🧠 How It Works
+
+1. Upload Image 📤  
+2. Scan Metadata 🔍  
+3. View EXIF + GPS 📍  
+4. Analyze Details ⚡  
+
+---
+
+## 🚀 Version
+
+- v1.0-beta (Pre-release)
 
 ---
 
 ## 👨‍💻 Developer
 
-**Current Vai**
+**Current Vai**  
+📧 currentvai@gmail.com  
+
+---
+
+## 🌐 Connect
+
+<p align="center">
+  <a href="https://github.com/currentvai">
+    <img src="https://img.shields.io/badge/GitHub-Profile-black?style=for-the-badge&logo=github">
+  </a>
+</p>
 
 ---
 
 ## ⭐ Support
 
-Give a ⭐ if you like this project!
+If you like this project, give it a star ⭐  
+
+---
+
+## ⚠️ Disclaimer
+
+This tool is for educational and personal use only.  
+Use responsibly and respect privacy.
