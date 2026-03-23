@@ -5,6 +5,10 @@
 </p>
 
 <p align="center">
+  <img src="Images/Current_Exif_Bot-v1.0-icon.png" width="120">
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/Version-v1.0--beta-green?style=for-the-badge">
   <img src="https://img.shields.io/badge/Platform-Android-blue?style=for-the-badge">
   <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge">
