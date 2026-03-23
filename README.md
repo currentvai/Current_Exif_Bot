@@ -1,7 +1,7 @@
 # 🧠 Current_Exif_Bot
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/currentvai/Current_Exif_Bot/main/banner.png" width="100%">
+  <img src="https://github.com/currentvai/Current_Exif_Bot/blob/main/Images/Current_Exif_Bot-v1.0-icon.png" width="100%">
 </p>
 
 <p align="center">
