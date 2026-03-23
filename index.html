@@ -12,97 +12,198 @@
             --glass: rgba(15, 15, 15, 0.9);
         }
 
+        * { box-sizing: border-box; }
+
         body, html {
             margin: 0; padding: 0;
             background: var(--dark-bg);
             color: #e0e0e0;
             font-family: 'Exo 2', sans-serif;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        #matrix { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.15; }
+        /* Matrix Rain Effect Canvas */
+        #matrix {
+            position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.15;
+        }
 
-        .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 15px; }
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 10px;
+        }
 
+        /* Header & Banner */
         .banner-container {
             width: 100%;
             border: 1px solid rgba(0, 242, 255, 0.2);
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
-            margin-bottom: 30px;
+            margin-top: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
-        .banner-container img { width: 100%; display: block; }
+        .banner-container img {
+            width: 100%;
+            display: block;
+        }
 
         .app-header {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            margin-bottom: 40px;
+            padding: 40px 10px;
         }
 
         .app-logo {
-            width: clamp(80px, 20vw, 130px);
+            width: clamp(90px, 20vw, 130px);
             height: auto;
-            border-radius: 20px;
+            border-radius: 25px;
             border: 2px solid var(--neon-cyan);
-            margin-bottom: 15px;
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+            margin-bottom: 20px;
+            box-shadow: 0 0 25px rgba(0, 242, 255, 0.3);
         }
 
         h1 {
             font-family: 'Orbitron', sans-serif;
-            /* clamp(min, preferred, max) - automatically scales */
-            font-size: clamp(1.2rem, 7vw, 2.5rem); 
+            /* Mobile-e choto ar Desktop-e boro thakbe automatic */
+            font-size: clamp(1.4rem, 6vw, 2.5rem);
             color: #fff;
-            text-shadow: 0 0 8px var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-cyan);
             margin: 0;
-            word-break: break-all; /* Mobile-e boro word bhengay dibe */
-            padding: 0 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            width: 100%;
+            overflow-wrap: break-word;
         }
 
-        .badge-row { display: flex; gap: 8px; justify-content: center; margin-top: 10px; flex-wrap: wrap; }
+        .badge-row {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
         .badge {
             background: rgba(0, 242, 255, 0.1);
             border: 1px solid var(--neon-cyan);
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 10px;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 11px;
             color: var(--neon-cyan);
+            font-weight: bold;
         }
 
-        .device-container {
+        /* Device Preview Section */
+        .preview-title {
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--neon-cyan);
+            margin: 40px 0 20px;
+        }
+
+        .device-scroll {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 40px;
+            gap: 20px;
+            flex-wrap: wrap; /* Mobile-e niche niche nambe */
+            padding-bottom: 30px;
         }
 
         .mockup {
-            width: 260px;
-            border: 6px solid #1a1a1a;
-            border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
-        }
-
-        .mockup img { width: 100%; border-radius: 24px; display: block; }
-
-        .dl-btn {
-            display: inline-block;
-            background: var(--neon-cyan);
-            color: #000;
-            padding: 15px 40px;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 50px;
-            margin-top: 50px;
+            width: 280px;
+            background: #000;
+            border: 8px solid #1a1a1a;
+            border-radius: 35px;
+            padding: 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
             transition: 0.3s;
         }
 
-        footer { padding: 40px 20px; text-align: center; font-size: 12px; color: #555; }
+        .mockup:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-cyan);
+        }
+
+        .mockup img {
+            width: 100%;
+            border-radius: 28px;
+            display: block;
+        }
+
+        /* Download Area */
+        .cta-section {
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .dl-btn {
+            background: linear-gradient(45deg, var(--neon-cyan), #0072ff);
+            color: #000;
+            padding: 18px 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            display: inline-block;
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.4);
+            transition: 0.3s;
+        }
+
+        .dl-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px var(--neon-cyan);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0,0,0,0.8);
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid #222;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .social-links a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 8px 15px;
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--neon-cyan);
+            color: #000;
+        }
+
+        .copyright {
+            font-size: 12px;
+            color: #555;
+            letter-spacing: 1px;
+        }
+
+        /* Media Query for small phones */
+        @media (max-width: 400px) {
+            .mockup { width: 100%; }
+            h1 { font-size: 1.2rem; }
+        }
     </style>
 </head>
 <body>
@@ -111,42 +212,62 @@
 
 <div class="container">
     <div class="banner-container">
-        <img src="Images/Banner.png" alt="Banner">
+        <img src="Images/Banner.png" alt="App Banner">
     </div>
 
-    <div class="app-header">
-        <img src="Images/Current_Exif_Bot-v1.0-icon.png" class="app-logo" alt="Icon">
-        <h1>CURRENT_EXIF_BOT</h1>
+    <header class="app-header">
+        <img src="Images/Current_Exif_Bot-v1.0-icon.png" class="app-logo" alt="Logo">
+        <h1>Current_Exif_Bot</h1>
         <div class="badge-row">
-            <span class="badge">V1.0</span>
-            <span class="badge">SECURE</span>
-            <span class="badge">FORENSIC</span>
+            <span class="badge">V1.0 STABLE</span>
+            <span class="badge">FORENSIC TOOL</span>
+            <span class="badge">ENCRYPTED</span>
+        </div>
+    </header>
+
+    <h2 class="preview-title">SYSTEM INTERFACE</h2>
+    <div class="device-scroll">
+        <div class="mockup">
+            <img src="Images/Screenshot_1-Current_Exif_Bot-v1.0.png" alt="Scan Screen">
+        </div>
+        <div class="mockup">
+            <img src="Images/Screenshot_2-Current_Exif_Bot-v1.0.jpg" alt="History Screen">
+        </div>
+        <div class="mockup">
+            <img src="Images/Screenshot_3-Current_Exif_Bot-v1.0.png" alt="Settings Screen">
         </div>
     </div>
 
-    <div class="device-container">
-        <div class="mockup"><img src="Images/Screenshot_1-Current_Exif_Bot-v1.0.png"></div>
-        <div class="mockup"><img src="Images/Screenshot_2-Current_Exif_Bot-v1.0.jpg"></div>
-    </div>
-
-    <div style="text-align:center;">
-        <a href="https://github.com/currentvai/Current-Exif-Bot/releases" class="dl-btn">DOWNLOAD APK</a>
+    <div class="cta-section">
+        <a href="https://github.com/currentvai/Current-Exif-Bot/releases" class="dl-btn">GET THE APP</a>
     </div>
 
     <footer>
-        <p>© 2026 CURRENT VAI | Developed for Forensic Transparency</p>
+        <div class="social-links">
+            <a href="https://github.com/currentvai">GITHUB</a>
+            <a href="https://t.me/currentvai">TELEGRAM</a>
+            <a href="https://www.facebook.com/cv.hasan.3">FACEBOOK</a>
+            <a href="mailto:currentvai@gmail.com">EMAIL</a>
+        </div>
+        <div class="copyright">
+            © 2026 CURRENT VAI. ALL RIGHTS RESERVED.<br>
+            <span style="color:#333; font-size:10px;">ENCRYPTED_TRANSMISSION_SECURED</span>
+        </div>
     </footer>
 </div>
 
 <script>
     const canvas = document.getElementById('matrix');
     const ctx = canvas.getContext('2d');
+
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    const letters = "0101";
+
+    const letters = "01010101X";
     const fontSize = 14;
     const columns = canvas.width / fontSize;
     const drops = Array(Math.floor(columns)).fill(1);
+
     function draw() {
         ctx.fillStyle = "rgba(3, 3, 3, 0.05)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -155,11 +276,16 @@
         for (let i = 0; i < drops.length; i++) {
             const text = letters.charAt(Math.floor(Math.random() * letters.length));
             ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-            if (drops[i] * fontSize > canvas.height && Math.random() > 0.985) drops[i] = 0;
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.98) drops[i] = 0;
             drops[i]++;
         }
     }
-    setInterval(draw, 40);
+    setInterval(draw, 35);
+
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
 </script>
 
 </body>
