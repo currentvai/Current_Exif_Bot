@@ -8,264 +8,145 @@
     <style>
         :root {
             --neon-cyan: #00f2ff;
-            --neon-green: #39ff14;
             --dark-bg: #030303;
-            --glass: rgba(15, 15, 15, 0.85);
+            --glass: rgba(15, 15, 15, 0.9);
         }
-
-        * { box-sizing: border-box; }
 
         body, html {
             margin: 0; padding: 0;
             background: var(--dark-bg);
             color: #e0e0e0;
             font-family: 'Exo 2', sans-serif;
-            scroll-behavior: smooth;
             overflow-x: hidden;
         }
 
-        /* Animated Matrix Background */
-        #matrix {
-            position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.15;
-        }
+        #matrix { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.15; }
 
-        .hero-section {
-            padding: 40px 20px;
-            text-align: center;
-        }
+        .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 15px; }
 
         .banner-container {
-            max-width: 1000px;
-            margin: 0 auto 40px;
-            border: 1px solid rgba(0, 242, 255, 0.3);
-            border-radius: 12px;
+            width: 100%;
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
         }
 
-        .banner-container img {
-            width: 100%;
-            display: block;
-            filter: contrast(1.1);
-        }
+        .banner-container img { width: 100%; display: block; }
 
         .app-header {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 50px;
+            text-align: center;
+            margin-bottom: 40px;
         }
 
         .app-logo {
-            width: 130px;
-            height: 130px;
-            border-radius: 24px;
+            width: clamp(80px, 20vw, 130px);
+            height: auto;
+            border-radius: 20px;
             border: 2px solid var(--neon-cyan);
-            box-shadow: 0 0 25px rgba(0, 242, 255, 0.4);
-            transition: transform 0.3s;
+            margin-bottom: 15px;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
         }
-
-        .app-logo:hover { transform: rotate(5deg) scale(1.05); }
 
         h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
+            /* clamp(min, preferred, max) - automatically scales */
+            font-size: clamp(1.2rem, 7vw, 2.5rem); 
             color: #fff;
+            text-shadow: 0 0 8px var(--neon-cyan);
             margin: 0;
-            text-shadow: 0 0 10px var(--neon-cyan);
+            word-break: break-all; /* Mobile-e boro word bhengay dibe */
+            padding: 0 10px;
         }
 
-        .badge-row {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
+        .badge-row { display: flex; gap: 8px; justify-content: center; margin-top: 10px; flex-wrap: wrap; }
         .badge {
             background: rgba(0, 242, 255, 0.1);
             border: 1px solid var(--neon-cyan);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 10px;
             color: var(--neon-cyan);
-            text-transform: uppercase;
-        }
-
-        /* Device Preview Section */
-        .preview-section {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 60px 20px;
-            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
         .device-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
+            margin-top: 40px;
         }
 
         .mockup {
-            width: 280px;
-            background: #000;
-            border: 8px solid #1a1a1a;
-            border-radius: 35px;
-            padding: 5px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-            transition: 0.4s;
+            width: 260px;
+            border: 6px solid #1a1a1a;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
         }
 
-        .mockup img {
-            width: 100%;
-            border-radius: 28px;
-            display: block;
-        }
-
-        .mockup:hover {
-            transform: translateY(-15px) scale(1.02);
-            border-color: var(--neon-cyan);
-        }
-
-        /* Features Section */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            max-width: 1000px;
-            margin: 60px auto;
-            padding: 0 20px;
-        }
-
-        .f-card {
-            background: var(--glass);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 30px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            text-align: left;
-        }
-
-        .f-card h3 { color: var(--neon-cyan); font-family: 'Orbitron'; margin-top: 0; }
-
-        /* Download Button */
-        .cta-box {
-            margin: 80px 0;
-        }
+        .mockup img { width: 100%; border-radius: 24px; display: block; }
 
         .dl-btn {
-            background: linear-gradient(45deg, var(--neon-cyan), #0072ff);
+            display: inline-block;
+            background: var(--neon-cyan);
             color: #000;
-            padding: 20px 60px;
+            padding: 15px 40px;
             font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
+            font-weight: bold;
             text-decoration: none;
             border-radius: 50px;
-            font-size: 18px;
-            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.3);
+            margin-top: 50px;
             transition: 0.3s;
         }
 
-        .dl-btn:hover {
-            letter-spacing: 2px;
-            box-shadow: 0 0 50px var(--neon-cyan);
-        }
-
-        footer {
-            padding: 60px 20px;
-            background: #000;
-            text-align: center;
-            border-top: 1px solid #111;
-        }
-
-        .social-links a {
-            color: #666;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .social-links a:hover { color: var(--neon-cyan); }
+        footer { padding: 40px 20px; text-align: center; font-size: 12px; color: #555; }
     </style>
 </head>
 <body>
 
 <canvas id="matrix"></canvas>
 
-<section class="hero-section">
+<div class="container">
     <div class="banner-container">
-        <img src="Images/Banner.png" alt="Current Exif Bot Banner">
+        <img src="Images/Banner.png" alt="Banner">
     </div>
 
     <div class="app-header">
-        <img src="Images/Current_Exif_Bot-v1.0-icon.png" class="app-logo" alt="App Icon">
+        <img src="Images/Current_Exif_Bot-v1.0-icon.png" class="app-logo" alt="Icon">
         <h1>CURRENT_EXIF_BOT</h1>
         <div class="badge-row">
-            <span class="badge">Version 1.0</span>
-            <span class="badge">Forensic Ready</span>
-            <span class="badge">Secure</span>
+            <span class="badge">V1.0</span>
+            <span class="badge">SECURE</span>
+            <span class="badge">FORENSIC</span>
         </div>
     </div>
-</section>
 
-<section class="preview-section">
-    <h2 style="text-align:center; font-family:'Orbitron'; margin-bottom:50px; color:var(--neon-cyan)">SYSTEM INTERFACE</h2>
     <div class="device-container">
-        <div class="mockup">
-            <img src="Images/Screenshot_1-Current_Exif_Bot-v1.0.png" alt="Scan Screen">
-        </div>
-        <div class="mockup">
-            <img src="Images/Screenshot_2-Current_Exif_Bot-v1.0.jpg" alt="History Screen">
-        </div>
-        <div class="mockup">
-            <img src="Images/Screenshot_3-Current_Exif_Bot-v1.0.png" alt="Settings Screen">
-        </div>
+        <div class="mockup"><img src="Images/Screenshot_1-Current_Exif_Bot-v1.0.png"></div>
+        <div class="mockup"><img src="Images/Screenshot_2-Current_Exif_Bot-v1.0.jpg"></div>
     </div>
-</section>
 
-<section class="features">
-    <div class="f-card">
-        <h3>🔍 ANALYSIS</h3>
-        <p>Deep scan images to extract camera model, lens aperture, focal length, and ISO settings instantly.</p>
+    <div style="text-align:center;">
+        <a href="https://github.com/currentvai/Current-Exif-Bot/releases" class="dl-btn">DOWNLOAD APK</a>
     </div>
-    <div class="f-card">
-        <h3>📍 GEOTAGS</h3>
-        <p>Pinpoint exactly where a photo was taken with integrated GPS coordinate extraction technology.</p>
-    </div>
-    <div class="f-card">
-        <h3>📜 HISTORY</h3>
-        <p>Keep track of all your previous forensic scans in a beautiful, organized history log.</p>
-    </div>
-</section>
 
-<div class="cta-box" style="text-align:center;">
-    <a href="https://github.com/currentvai/Current-Exif-Bot/releases" class="dl-btn">DOWNLOAD APK</a>
+    <footer>
+        <p>© 2026 CURRENT VAI | Developed for Forensic Transparency</p>
+    </footer>
 </div>
-
-<footer>
-    <div class="social-links">
-        <a href="https://github.com/currentvai">GITHUB</a>
-        <a href="https://t.me/currentvai">TELEGRAM</a>
-        <a href="mailto:currentvai@gmail.com">EMAIL</a>
-        <a href="https://www.facebook.com/cv.hasan.3">FACEBOOK</a>
-    </div>
-    <p style="margin-top:30px; font-size:12px; color:#444;">© 2026 CURRENT VAI. ALL RIGHTS RESERVED. <br> ENCRYPTED TRANSMISSION SECURED.</p>
-</footer>
 
 <script>
     const canvas = document.getElementById('matrix');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    const letters = "01010101X";
+    const letters = "0101";
     const fontSize = 14;
     const columns = canvas.width / fontSize;
     const drops = Array(Math.floor(columns)).fill(1);
-
     function draw() {
         ctx.fillStyle = "rgba(3, 3, 3, 0.05)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -274,16 +155,11 @@
         for (let i = 0; i < drops.length; i++) {
             const text = letters.charAt(Math.floor(Math.random() * letters.length));
             ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-            if (drops[i] * fontSize > canvas.height && Math.random() > 0.98) drops[i] = 0;
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.985) drops[i] = 0;
             drops[i]++;
         }
     }
-    setInterval(draw, 35);
-
-    window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    });
+    setInterval(draw, 40);
 </script>
 
 </body>
