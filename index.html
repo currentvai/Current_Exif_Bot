@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current_Exif_Bot | Forensic Metadata</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo+2:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon: #00f2ff;
+            --bg: #050505;
+            --glitch-red: #ff00c1;
+            --glitch-blue: #00fff0;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg);
+            color: #fff;
+            font-family: 'Exo 2', sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Canvas background for Matrix/Digital Rain effect */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            opacity: 0.15;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            background: rgba(10, 10, 10, 0.9);
+            border: 2px solid var(--neon);
+            padding: 40px;
+            border-radius: 5px;
+            text-align: center;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
+            clip-path: polygon(0 5%, 5% 0, 100% 0, 100% 95%, 95% 100%, 0 100%);
+        }
+
+        /* Glitch Effect for Title */
+        .glitch {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            position: relative;
+            color: var(--neon);
+            text-shadow: 0 0 10px var(--neon);
+            margin: 0;
+        }
+
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 var(--glitch-red);
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 var(--glitch-blue);
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(31px, 9999px, 94px, 0); }
+            20% { clip: rect(62px, 9999px, 42px, 0); }
+            100% { clip: rect(85px, 9999px, 15px, 0); }
+        }
+
+        @keyframes glitch-anim2 {
+            0% { clip: rect(10px, 9999px, 85px, 0); }
+            20% { clip: rect(45px, 9999px, 12px, 0); }
+            100% { clip: rect(2px, 9999px, 90px, 0); }
+        }
+
+        .tagline {
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        .features {
+            text-align: left;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+            border-left: 1px solid var(--neon);
+            padding-left: 20px;
+        }
+
+        .features div {
+            margin: 10px 0;
+            opacity: 0.8;
+        }
+
+        .features b { color: var(--neon); }
+
+        .btn-box {
+            position: relative;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .download-btn {
+            background: transparent;
+            color: var(--neon);
+            border: 1px solid var(--neon);
+            padding: 15px 40px;
+            font-family: 'Orbitron', sans-serif;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            transition: 0.4s;
+            overflow: hidden;
+        }
+
+        .download-btn:hover {
+            background: var(--neon);
+            color: #000;
+            box-shadow: 0 0 40px var(--neon);
+        }
+
+        .contact-info {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        .contact-info a {
+            color: var(--neon);
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .scan-line {
+            width: 100%;
+            height: 2px;
+            background: var(--neon);
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0.3;
+            animation: scan 4s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas"></canvas>
+
+    <div class="container">
+        <div class="scan-line"></div>
+        <h1 class="glitch" data-text="CURRENT_EXIF_BOT">CURRENT_EXIF_BOT</h1>
+        <p class="tagline">FORENSIC METADATA EXTRACTION</p>
+
+        <div class="features">
+            <div>⚡ <b>EXIF</b> ANALYZER</div>
+            <div>📍 <b>GPS</b> COORDINATES</div>
+            <div>🔍 <b>DEEP</b> SCAN MODE</div>
+            <div>🛡️ <b>SECURE</b> ENCRYPTION</div>
+        </div>
+
+        <div class="btn-box">
+            <a href="https://github.com/currentvai/Current-Exif-Bot/releases" class="download-btn">GET APP</a>
+        </div>
+
+        <div class="contact-info">
+            Developed by <b>Current Vai</b><br><br>
+            <a href="https://github.com/currentvai">GitHub</a> | 
+            <a href="https://t.me/currentvai">Telegram</a> | 
+            <a href="mailto:currentvai@gmail.com">Email</a> | 
+            <a href="https://www.facebook.com/cv.hasan.3">Facebook</a>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const alphabet = "0101ABCDEFHIJKLMNOPQRSTUVWXYZ0123456789";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+
+        const rainDrops = [];
+
+        for( let x = 0; x < columns; x++ ) {
+            rainDrops[x] = 1;
+        }
+
+        const draw = () => {
+            ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#00f2ff';
+            ctx.font = fontSize + 'px monospace';
+
+            for(let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                if(rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975){
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+
+        setInterval(draw, 30);
+    </script>
+</body>
+</html>
